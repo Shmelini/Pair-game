@@ -1,12 +1,12 @@
 
-// // Создание стола
-// function createTable () {
-//     let table = document.createElement('div')
-//     table.classList.add('table')
-//     document.body.append(table)
+// Создание стола
+function createTable () {
+    let table = document.createElement('ul')
+    table.classList.add('table')
+    document.body.append(table)
 
-//     return table
-// };
+    return table
+};
     
 
 
@@ -31,7 +31,21 @@ function initCardsArray(lenght) {
     return cardArr.sort(() => Math.random() - 0.5);
 }
 
-console.log(initCardsArray(8))
+
+function createGame() {
+    let table = createTable();
+    let cards = initCardsArray(8);
+    for(let i = 0; i < cards.length; i++) {
+        let div = document.createElement('li')
+        div.classList.add('card')
+       div.textContent = cards[i].value
+       table.append(div)
+    }
+
+   
+}
+
+createGame()
 
 
 
