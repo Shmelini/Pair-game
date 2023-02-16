@@ -8,28 +8,17 @@ function createTable() {
     return table
 };
 
-
-
-// Конструктор карт
-class Cards {
-    constructor(value) {
-        this.value = value
-        this.isTurned = false
-    }
-}
-
-
-
-
 function initCardsArray(lenght) {
     let cardArr = []
     for (let i = 0; i < lenght; i++) {
-        cardArr.push(new Cards(i))
+        cardArr.push(i+1)
     }
     cardArr = cardArr.concat(cardArr);
 
     return cardArr.sort(() => Math.random() - 0.5);
 }
+
+console.log(initCardsArray(8))
 
 
 function createGame() {
@@ -38,14 +27,20 @@ function createGame() {
     for (let i = 0; i < cards.length; i++) {
         let div = document.createElement('li')
         div.classList.add('card')
-        div.textContent = cards[i].value
+        div.textContent = cards[i]
+        div.classList.add('turned')
+        div.addEventListener('click', () => {
+            div.classList.toggle('turned')
+        })
         table.append(div)
         
     }
+    
    
 }
 
 createGame()
+
 
 
 
