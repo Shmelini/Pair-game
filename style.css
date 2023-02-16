@@ -4,6 +4,8 @@
   box-sizing: border-box;
 }
 
+
+
 .table {
   display: grid;
   gap: 10px;
@@ -13,7 +15,6 @@
   grid-template-columns: repeat(4, 200px);
   grid-template-rows: repeat(4, 200px);
   margin-top: 70px;
-
 }
 
 
@@ -21,7 +22,7 @@
   width: 200px;
   height: 200px;
   text-align: center;
-  border: 3px solid lightgreen;
+  border: 3px solid black;
   list-style-type: none;
   line-height: 175px;
   font-size: 50px;
@@ -29,6 +30,7 @@
 
 .card:hover {
   transform: scale(1.04);
+  box-shadow: 4px 4px rgba(105, 105, 105, .5);
 }
 
 .turned {
