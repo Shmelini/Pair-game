@@ -30,12 +30,12 @@
 
 .card:hover {
   transform: scale(1.04);
-  box-shadow: 4px 4px rgba(105, 105, 105, .5);
+  box-shadow: 4px 4px 5px rgba(105, 105, 105, .5);
 }
 
 .turned {
   text-indent: -9999px;
-  background-image: url(./Arrow-1024.webp);
+  background-image: url(./img_70657.png);
   background-size: 50%;
   background-repeat: no-repeat;
   background-position: center;
