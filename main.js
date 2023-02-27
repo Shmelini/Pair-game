@@ -31,6 +31,9 @@ function createGame() {
         div.classList.add('turned')
         div.addEventListener('click', () => {
             div.classList.toggle('turned')
+            if (document.getElementsByClassName("turned").length == 0) {
+                console.log('победа')
+            }
         })
         table.append(div)
         
@@ -40,6 +43,12 @@ function createGame() {
 }
 
 createGame()
+
+function ruleNumeroUno() {
+    document.getElementsByClassName("turned").length
+}
+
+ruleNumeroUno();
 
 
 
