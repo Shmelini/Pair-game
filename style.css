@@ -26,6 +26,11 @@
   list-style-type: none;
   line-height: 175px;
   font-size: 50px;
+  text-indent: -9999px;
+  background-image: url(./img_70657.png);
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .card:hover {
@@ -34,10 +39,8 @@
 }
 
 .turned {
-  text-indent: -9999px;
-  background-image: url(./img_70657.png);
-  background-size: 50%;
-  background-repeat: no-repeat;
-  background-position: center;
+  text-indent: 0px;
+  background-image: none;
+  
   
 }
