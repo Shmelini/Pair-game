@@ -30,10 +30,13 @@ function createGame() {
         div.classList.add('card');
         div.textContent = cards[i];
         div.setAttribute('data-value', div.textContent)
+        // Тут я создал массив, куда хочу пихать значения карт
         let curCardsVal = [];
+        // Тут то, что происходит по нажатию на карты
         div.addEventListener('click', ()=> {
             if (document.getElementsByClassName("turned").length == 0 || document.getElementsByClassName("turned").length == 1) {
                     div.classList.toggle('turned')
+                    // Я хуй пойму, что происходит с этим массивом по нажатию. Он либо множится, либо значение в нем перезаписывается к хуям
                     curCardsVal.push(div.dataset.value)
             }
             else {
