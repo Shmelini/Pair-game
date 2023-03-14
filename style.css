@@ -40,7 +40,10 @@
 
 .turned {
   text-indent: 0px;
-  background-image: none;
-  
-  
+  background-image: none;  
+}
+
+.done {
+  text-indent: 0px;
+  background-image: none; 
 }
