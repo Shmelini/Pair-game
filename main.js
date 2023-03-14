@@ -1,66 +1,77 @@
+/**
+ * 1) В конце объявления функции ';' Не нужен
+ * 2) Показал как указывать тип аргумента
+ *  функции и возвращаемого значения. Желательно
+ *  их указывать, чтобы IDE понимала лучше код
+ *
+ */
 
-// Создание стола
-function createTable() {
-    let table = document.createElement('ul')
-    table.classList.add('table')
-    document.body.append(table)
+class Table {
+    table;
+    cards = [];
 
-    return table
-};
+    /**
+     *
+     * @param {number} cardsCount
+     */
+    constructor(cardsCount = 8) {
+        this.table = document.createElement('ul');
+        this.table.classList.add('table');
+        document.body.append(this.table);
 
-function initCardsArray(lenght) {
-    let cardArr = []
-    for (let i = 0; i < lenght; i++) {
-        cardArr.push(i+1)
+        this.initCardsArray(cardsCount);
+        this.renderCards();
     }
-    cardArr = cardArr.concat(cardArr);
 
-    return cardArr.sort(() => Math.random() - 0.5);
+     initCardsArray(length) {
+        let cardArr = []
+        for (let i = 0; i < length; i++) {
+            cardArr.push(i+1)
+        }
+        cardArr = cardArr.concat(cardArr);
+
+        this.cards = cardArr.sort(() => Math.random() - 0.5);
+    }
+
+    renderCards () {
+        for (let i = 0; i < this.cards.length; i++) {
+            let div = document.createElement('li');
+            div.classList.add('card');
+            div.textContent = this.cards[i];
+            div.addEventListener('click', () => {
+
+            });
+            this.table.append(div);
+        }
+
+        this.table.addEventListener('click', (e) => {
+            const target = e.target
+            if (!target.classList.contains('card')) {
+                return;
+            }
+            target.classList.add('turned')
+
+
+            const turned = document.getElementsByClassName("turned")
+
+            if (turned.length === 2) {
+                if (turned[0].textContent === turned[1].textContent) {
+                    Array.from(turned).forEach((element) => element.remove())
+                } else {
+                    setTimeout(() => {
+                        Array.from(turned).forEach((element) => element.classList.remove('turned'))
+                    }, 500);
+                }
+            }
+
+            if (!document.getElementsByClassName("card").length) {
+                alert('Поздравляю игра пройдена');
+            }
+        })
+    }
 }
 
-
-
-
-function createGame() {
-    let table = createTable();
-    let cards = initCardsArray(8);
-    let curCardsVal = [];
-    for (let i = 0; i < cards.length; i++) {
-        let div = document.createElement('li');
-        div.classList.add('card');
-        div.textContent = cards[i];
-        div.addEventListener('click', ()=> {
-            if (document.getElementsByClassName("turned").length == 0 || document.getElementsByClassName("turned").length == 1) {
-                    div.classList.toggle('turned')
-                    curCardsVal.push(div.textContent)
-            }
-            else {
-                div.classList.remove('turned')
-            }
-// Вот здесь я пробую сделать механику, где 2 одинаковых карты остаются открытыми, но работает оно только по факту клика, что хуйня
-
-            if (curCardsVal.length > 2 && curCardsVal[0] !== curCardsVal[1]) {
-                curCardsVal = []
-                div.classList.remove('turned')
-            }
-            console.log(curCardsVal)
-
-            if (curCardsVal[0] === curCardsVal[1]) {
-                document.getElementsByClassName('turned').classList.add('done')
-            }
-        });
-        table.append(div);
-        
-    }; 
-};
-
-createGame()
-
-// function ruleNumeroUno() {
-//     document.getElementsByClassName("turned").length
-// }
-
-// ruleNumeroUno();
+new Table();
 
 
 
